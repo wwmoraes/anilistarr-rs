@@ -1,0 +1,13 @@
+version: 3
+
+tasks:
+  build:
+    aliases: [default]
+    desc: Builds all binaries.
+    cmd: cargo build
+    sources:
+    - src/**/*.rs
+    - Cargo.lock
+    - Cargo.toml
+    generates:
+    - target/debug/**/*

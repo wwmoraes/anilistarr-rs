@@ -1,0 +1,65 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "tests (lib)",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "--lib",
+          "--package=anilistarr-rs"
+        ],
+        "filter": {
+          "name": "anilistarr_rs",
+          "kind": "lib"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "handler",
+      "cargo": {
+        "args": [
+          "build",
+          "--bin=handler",
+          "--package=anilistarr-rs"
+        ],
+        "filter": {
+          "name": "handler",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "tests (handler)",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "--bin=handler",
+          "--package=anilistarr-rs"
+        ],
+        "filter": {
+          "name": "handler",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+[package]
+name = "anilistarr-rs"
+authors = ["William Artero"]
+description = "Converts an Anilist user watching list to a custom list format which *arr apps support."
+edition = "2021"
+license = "MIT"
+version = "0.1.0"
+
+[dependencies]
+axum = "~0"
+futures = "~0"
+governor = "0.6.3"
+graphql_client = { version = "~0", features = ["reqwest", "reqwest-blocking"] }
+http = "~1"
+lmdb-rkv = "0.14.0"
+nonzero_ext = "0.3.0"
+opentelemetry = "0.24.0"
+opentelemetry-appender-tracing = "0.5.0"
+opentelemetry-otlp = { version = "0.17.0", default-features = false, features = ["http", "logs", "metrics", "tokio", "trace", "reqwest", "serde", "serde_json", "reqwest-rustls", "http-proto"] }
+opentelemetry-stdout = "0.5.0"
+opentelemetry_sdk = { version = "0.24.1", features = ["tokio", "serde", "http", "rt-tokio"] }
+redis = "0.26.1"
+reqwest = { version = "~0.11", features = ["blocking"] }
+reqwest-middleware = "0.3.3"
+serde = { version = "~1", features = ["derive"] }
+serde_json = "~1"
+signal-hook = "0.3.17"
+thiserror = "~1"
+tokio = { version = "~1", features = ["full"] }
+tower = { version = "~0", features = ["full"] }
+tower-http = { version = "~0", features = ["full"] }
+tracing = "0.1.40"
+tracing-opentelemetry = { version = "0.25.0", features = ["thiserror"] }
+tracing-subscriber = { version = "0.3.18", features = ["tracing"] }
+url = { version = "~2", features = ["serde"] }
+
+[lints.rust]
+# box-pointers = { level = "warn" }
+# missing-copy-implementations = { level = "warn" }
+# missing-debug-implementations = { level = "warn" }
+absolute-paths-not-starting-with-crate = { level = "warn" }
+deprecated-in-future = { level = "warn" }
+deprecated-safe = { level = "warn" }
+explicit-outlives-requirements = { level = "warn" }
+ffi-unwind-calls = { level = "warn" }
+keyword-idents-2018 = { level = "warn" }
+keyword-idents-2024 = { level = "warn" }
+let-underscore-drop = { level = "warn" }
+macro-use-extern-crate = { level = "warn" }
+meta-variable-misuse = { level = "warn" }
+missing-abi = { level = "warn" }
+# missing-docs = { level = "warn" }
+missing-unsafe-on-extern = { level = "warn" }
+non-ascii-idents = { level = "warn" }
+non-local-definitions = { level = "warn" }
+redundant-lifetimes = { level = "warn" }
+rust-2021-incompatible-closure-captures = { level = "warn" }
+rust-2021-incompatible-or-patterns = { level = "warn" }
+rust-2021-prefixes-incompatible-syntax = { level = "warn" }
+rust-2021-prelude-collisions = { level = "warn" }
+single-use-lifetimes = { level = "warn" }
+trivial-casts = { level = "warn" }
+trivial-numeric-casts = { level = "warn" }
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(tarpaulin_include)'] }
+unit-bindings = { level = "warn" }
+unnameable-types = { level = "warn" }
+unreachable-pub = { level = "warn" }
+unsafe-code = { level = "warn" }
+unsafe-op-in-unsafe-fn = { level = "warn" }
+unstable-features = { level = "warn" }
+# unused-crate-dependencies = { level = "warn" }
+unused-extern-crates = { level = "warn" }
+unused-import-braces = { level = "warn" }
+unused-lifetimes = { level = "warn" }
+unused-macro-rules = { level = "warn" }
+unused-qualifications = { level = "warn" }
+variant-size-differences = { level = "warn" }

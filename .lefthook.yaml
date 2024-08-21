@@ -1,0 +1,45 @@
+# yaml-language-server: =https://json.schemastore.org/lefthook.json
+assert_lefthook_installed: true
+commit-msg:
+  commands:
+    commitlint:
+      run: grep -q "^fixup! " "{1}" || commitlint lint --message "{1}"
+    trailers:
+      run: git interpret-trailers --in-place --trailer "sign" --trim-empty "{1}"
+pre-push:
+  piped: true
+  commands:
+    configure:
+      priority: 10
+      run: lefthook run lint
+      env:
+        LEFTHOOK_QUIET: meta,success
+    lint:
+      priority: 20
+      run: lefthook run lint
+      env:
+        LEFTHOOK_QUIET: meta,success
+    build:
+      priority: 90
+      run: task build
+configure:
+  commands:
+    vale-sync:
+      run: vale sync
+      glob: .vale.ini
+lint:
+  parallel: true
+  commands:
+    typos:
+      run: typos --force-exclude {staged_files}
+      exclude: .*\.(jpg|png)$
+    editorconfig-checker:
+      run: editorconfig-checker {staged_files}
+      exclude: .*\.(jpg|png)$
+    vale:
+      run: vale {staged_files}
+      exclude: (\.styles)/.*
+    clippy:
+      run: cargo clippy
+      glob: "**/*.rs"
+      tags: rust

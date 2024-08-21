@@ -1,0 +1,13 @@
+query GetWatching($userId: Int!, $page: Int!, $perPage:Int!) {
+  Page(page:$page, perPage: $perPage) {
+    mediaList(userId: $userId, type: ANIME, status_in: [CURRENT, PLANNING]) {
+      media {
+        id
+        idMal
+        title {
+          romaji
+        }
+      }
+    }
+  }
+}

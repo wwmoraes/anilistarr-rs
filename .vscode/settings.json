@@ -1,0 +1,6 @@
+{
+  "evenBetterToml.schema.enabled": true,
+  "nixEnvSelector.nixFile": "${workspaceFolder}/shell.nix",
+  "rust-analyzer.check.command": "clippy",
+  "rust-analyzer.checkOnSave": true
+}
